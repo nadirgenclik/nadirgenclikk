@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nadir Gençlik FK</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f4f4; color: #111; }
+
+    nav {
+      background: #0a1a3d;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+      border-bottom: 3px solid #fff;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 13px; color: #0a1a3d;
+    }
+    .logo-text { color: #fff; font-size: 15px; font-weight: 600; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-size: 14px; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+
+    .hero {
+      background: #0a1a3d;
+      color: #fff; padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px; padding: 4px 18px;
+      font-size: 12px; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 { font-size: 40px; font-weight: 700; margin-bottom: 0.5rem; }
+    .hero h1 span { display: block; font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.55); margin-top: 6px; }
+    .hero p { font-size: 16px; color: rgba(255,255,255,0.7); max-width: 500px; margin: 1.5rem auto; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .btn-primary {
+      background: #fff; color: #0a1a3d;
+      border: none; border-radius: 8px;
+      padding: 12px 28px; font-size: 15px; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-secondary {
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.5); border-radius: 8px;
+      padding: 12px 28px; font-size: 15px;
+      cursor: pointer; text-decoration: none;
+    }
+
+    .stats-bar {
+      background: #fff; border-bottom: 1px solid #e0e0e0;
+      display: flex; justify-content: center;
+    }
+    .stat-item {
+      padding: 1.5rem 3rem; text-align: center;
+      border-right: 1px solid #e0e0e0;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 26px; font-weight: 700; color: #0a1a3d; }
+    .stat-label { font-size: 12px; color: #888; margin-top: 3px; }
+
+    .section { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-size: 20px; font-weight: 700; color: #0a1a3d;
+      margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+      border-bottom: 3px solid #0a1a3d; display: inline-block;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px; margin-top: 1rem;
+    }
+    .video-card {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid #ddd; background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .video-thumb {
+      background: #0a1a3d; height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .play-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-triangle {
+      width: 0; height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 16px solid #0a1a3d;
+      margin-left: 4px;
+    }
+    .video-week {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(255,255,255,0.15); border-radius: 4px;
+      padding: 2px 8px; font-size: 11px; color: #fff;
+    }
+    .video-duration {
+      position: absolute; bottom: 8px; right: 8px;
+      background: rgba(0,0,0,0.6); border-radius: 4px;
+      padding: 2px 6px; font-size: 11px; color: #fff;
+    }
+    .video-info { padding: 12px 14px 14px; }
+    .video-title { font-size: 14px; font-weight: 600; color: #111; line-height: 1.4; }
+    .video-date { font-size: 12px; color: #888; margin-top: 4px; }
+
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2.5rem; padding: 0 2rem 3rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .fixture-list { display: flex; flex-direction: column; gap: 10px; margin-top: 1rem; }
+    .fixture-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px; border-radius: 8px;
+      background: #fff; border: 1px solid #e0e0e0;
+    }
+    .fixture-teams { font-size: 14px; font-weight: 600; color: #111; }
+    .fixture-vs { font-size: 12px; color: #888; font-weight: 400; margin: 0 6px; }
+    .fixture-date { font-size: 12px; color: #888; margin-top: 3px; }
+    .fixture-result {
+      font-size: 16px; font-weight: 700; color: #0a1a3d;
+      background: #e8eef7; border-radius: 6px; padding: 4px 14px;
+    }
+    .fixture-upcoming {
+      font-size: 12px; color: #888;
+      background: #f5f5f5; border-radius: 6px; padding: 4px 12px;
+    }
+
+    .about-text { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 1rem; }
+    .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1rem; }
+    .tag {
+      border-radius: 8px; padding: 8px 18px; font-size: 13px; font-weight: 600;
+    }
+    .tag-primary { background: #0a1a3d; color: #fff; }
+    .tag-secondary { background: #f0f0f0; color: #555; border: 1px solid #e0e0e0; }
+
+    footer {
+      background: #0a1a3d; color: rgba(255,255,255,0.6);
+      text-align: center; padding: 1.75rem; font-size: 13px;
+    }
+    footer span { color: #fff; font-weight: 600; }
+
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; }
+      .stat-item { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <div class="logo-circle">NGF</div>
+      <div class="logo-text">Nadir Gençlik FK</div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Anasayfa</a>
+      <a href="#">Videolar</a>
+      <a href="mac-sonuclari.html">Maçlar</a>
+      <a href="kadro.html">Kadro</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">Resmi Websitesi</div>
+    <h1>Nadir Gençlik FK <span>Lacivert & Beyaz · 2024</span></h1>
+    <p>Takımımızın haftalık maç videolarını, fikstürünü ve kadro bilgilerini buradan takip edin.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Son Videoyu İzle</a>
+      <a href="mac-sonuclari.html" class="btn-secondary">Fikstür</a>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Maç</div></div>
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Galibiyet</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Beraberlik</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Mağlubiyet</div></div>
+    <div class="stat-item"><div class="stat-num">24</div><div class="stat-label">Video</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Son Videolar</div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="video-week">Hafta 24</div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <div class="video-duration">1:02:34</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">NGF vs Demir Spor – Tam Maç</div>
+          <div class="video-date">30 Mart 2025</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" style="background:#0d2456;">
+          <div class="video-week">Hafta 23</div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <div class="video-duration">58:11</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">NGF vs Yıldız FK – Tam Maç</div>
+          <div class="video-date">23 Mart 2025</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" style="background:#091530;">
+          <div class="video-week">Hafta 22</div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <div class="video-duration">1:05:47</div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">NGF vs Çelik Gençlik – Tam Maç</div>
+          <div class="video-date">16 Mart 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="section-title">Son Maçlar</div>
+      <div class="fixture-list">
+        <div class="fixture-item">
+          <div>
+            <div class="fixture-teams">NGF <span class="fixture-vs">vs</span> Demir Spor</div>
+            <div class="fixture-date">30 Mart 2025</div>
+          </div>
+          <div class="fixture-result">3 – 1</div>
+        </div>
+        <div class="fixture-item">
+          <div>
+            <div class="fixture-teams">NGF <span class="fixture-vs">vs</span> Yıldız FK</div>
+            <div class="fixture-date">23 Mart 2025</div>
+          </div>
+          <div class="fixture-result">2 – 2</div>
+        </div>
+        <div class="fixture-item">
+          <div>
+            <div class="fixture-teams">NGF <span class="fixture-vs">vs</span> Çelik Gençlik</div>
+            <div class="fixture-date">16 Mart 2025</div>
+          </div>
+          <div class="fixture-result">1 – 0</div>
+        </div>
+        <div class="fixture-item">
+          <div>
+            <div class="fixture-teams">NGF <span class="fixture-vs">vs</span> Kuzey Spor</div>
+            <div class="fixture-date">6 Nisan 2025</div>
+          </div>
+          <div class="fixture-upcoming">Yaklaşan maç</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">Hakkımızda</div>
+      <p class="about-text">Nadir Gençlik FK olarak her hafta sahaya en iyi şekilde çıkıyor, maçlarımızı video olarak arşivliyoruz. Lacivert-beyaz formamızla gençlerin sporla buluşması için mücadele ediyoruz.</p>
+      <div class="tags">
+        <span class="tag tag-primary">Futbol</span>
+        <span class="tag tag-secondary">Gençlik</span>
+        <span class="tag tag-secondary">Amatör Lig</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Nadir Gençlik FK</span> &nbsp;·&nbsp; Tüm hakları saklıdır &nbsp;·&nbsp; 2025
+  </footer>
+
+</body>
+</html>
