@@ -98,6 +98,33 @@ body[data-theme="light"] {
   --theme-toggle-text: var(--text-dark);
 }
 
+body:not([data-theme="light"]) {
+  --page-bg:
+    radial-gradient(circle at top left, rgba(16, 146, 219, 0.16), transparent 22%),
+    radial-gradient(circle at top right, rgba(229, 37, 42, 0.12), transparent 20%),
+    linear-gradient(180deg, #020811 0, #06101c 18rem, #07121f 18rem, #030912 100%);
+  --nav-surface: rgba(3, 11, 20, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --hero-surface:
+    radial-gradient(circle at top right, rgba(16, 146, 219, 0.16), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(229, 37, 42, 0.12), transparent 24%),
+    linear-gradient(145deg, rgba(6, 18, 31, 0.99), rgba(2, 8, 15, 0.99));
+  --dark-panel-surface: linear-gradient(160deg, rgba(7, 20, 35, 0.98), rgba(2, 9, 16, 0.99));
+  --footer-surface: linear-gradient(145deg, rgba(6, 18, 31, 0.99), rgba(2, 8, 15, 0.99));
+  --loader-surface:
+    radial-gradient(circle at top, rgba(16, 146, 219, 0.18), transparent 28%),
+    radial-gradient(circle at bottom, rgba(229, 37, 42, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(2, 7, 13, 0.995), rgba(3, 10, 18, 0.995));
+  --bg-card: #0b1826;
+  --bg-muted: #101d2c;
+  --text-dark: #edf4fb;
+  --text-muted: #9eb0c4;
+  --line-light: rgba(255, 255, 255, 0.08);
+  --theme-toggle-surface: rgba(255, 255, 255, 0.06);
+  --theme-toggle-border: rgba(255, 255, 255, 0.12);
+  --theme-toggle-text: var(--text-light);
+}
+
 body.is-loading {
   overflow: hidden;
 }
@@ -464,17 +491,13 @@ body[data-theme="light"] .nav-links a[aria-current="page"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 42px;
-  padding: 10px 14px;
-  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
   border: 1px solid var(--theme-toggle-border);
   background: var(--theme-toggle-surface);
   color: var(--theme-toggle-text);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
@@ -483,8 +506,8 @@ body[data-theme="light"] .nav-links a[aria-current="page"] {
 }
 
 .theme-toggle svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: currentColor;
 }
 
@@ -1067,6 +1090,40 @@ body[data-theme="light"] .nav-links a[aria-current="page"] {
 .manifesto p {
   margin: 0;
   line-height: 1.85;
+  color: var(--text-muted);
+}
+
+body:not([data-theme="light"]) .panel:not(.panel-dark):not(.hero-panel):not(.pitch-panel):not(.page-hero) {
+  background: #0b1826;
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+body:not([data-theme="light"]) .stat-card,
+body:not([data-theme="light"]) .match-row,
+body:not([data-theme="light"]) .player-card,
+body:not([data-theme="light"]) .result-card {
+  background: #101d2c;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+body:not([data-theme="light"]) .section-head h2,
+body:not([data-theme="light"]) .section-head h3,
+body:not([data-theme="light"]) .squad-title,
+body:not([data-theme="light"]) .results-title,
+body:not([data-theme="light"]) .player-meta strong,
+body:not([data-theme="light"]) .match-row strong,
+body:not([data-theme="light"]) .result-card strong,
+body:not([data-theme="light"]) .manifesto p strong {
+  color: var(--text-light);
+}
+
+body:not([data-theme="light"]) .match-row span,
+body:not([data-theme="light"]) .result-card span,
+body:not([data-theme="light"]) .player-meta span,
+body:not([data-theme="light"]) .manifesto p,
+body:not([data-theme="light"]) .lineup-info p,
+body:not([data-theme="light"]) .results-aside p {
   color: var(--text-muted);
 }
 

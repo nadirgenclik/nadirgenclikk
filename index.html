@@ -40,7 +40,6 @@
       <div class="nav-actions" id="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Temayı değiştir">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.99 8.99 0 0 1 11.2 3a1 1 0 0 0-1.14-1A10 10 0 1 0 22 13.94a1 1 0 0 0-1-1.14Z"/></svg>
-          <span id="theme-toggle-label">Beyaz Tema</span>
         </button>
         <div class="nav-links">
           <a href="index.html" aria-current="page">Anasayfa</a>
@@ -379,23 +378,21 @@
 
     (function () {
       var themeToggle = document.getElementById("theme-toggle");
-      var themeLabel = document.getElementById("theme-toggle-label");
-
-      function updateThemeButton() {
-        if (!themeLabel) return;
-        var isLight = document.body.getAttribute("data-theme") === "light";
-        themeLabel.textContent = isLight ? "Karanlık Tema" : "Beyaz Tema";
-      }
-
-      updateThemeButton();
 
       if (themeToggle) {
+        function updateThemeToggleLabel() {
+          var isLight = document.body.getAttribute("data-theme") === "light";
+          themeToggle.setAttribute("aria-label", isLight ? "Karanlık temaya geç" : "Beyaz temaya geç");
+        }
+
+        updateThemeToggleLabel();
+
         themeToggle.addEventListener("click", function () {
           var currentTheme = document.body.getAttribute("data-theme") === "light" ? "light" : "dark";
           var nextTheme = currentTheme === "light" ? "dark" : "light";
           document.body.setAttribute("data-theme", nextTheme);
           localStorage.setItem("ngf-theme", nextTheme);
-          updateThemeButton();
+          updateThemeToggleLabel();
         });
       }
 
