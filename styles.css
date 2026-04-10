@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg-top: #06111e;
   --bg-deep: #0a1b30;
   --bg-panel: rgba(8, 24, 42, 0.92);
@@ -1998,7 +1998,18 @@ body[data-theme="light"] .video-card {
     padding: 18px;
   }
 
-  .mini-vs {
+  .opponent-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  border: 1px solid var(--nav-border);
+  background: rgba(255, 255, 255, 0.05);
+}
+}
+.mini-vs {
     font-size: 1.35rem;
   }
 
