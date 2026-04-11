@@ -2122,6 +2122,32 @@ body[data-theme="light"] .video-card {
     grid-template-columns: 1fr;
   }
 
+  .club-page .page-hero-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .club-page .page-copy {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .club-page .page-summary {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    gap: 12px;
+  }
+
+  .club-page .summary-card {
+    width: 100%;
+  }
+
   .club-page .page-copy h1 {
     font-size: 1.84rem;
     line-height: 1.14;
@@ -2133,19 +2159,6 @@ body[data-theme="light"] .video-card {
   .club-page .page-copy p {
     font-size: 0.96rem;
     line-height: 1.7;
-  }
-
-  .club-page .page-copy {
-    gap: 14px;
-  }
-
-  .club-page .page-hero-grid {
-    gap: 22px;
-  }
-
-  .club-page .page-summary {
-    margin-top: 10px;
-    gap: 14px;
   }
 
   .club-page .page-hero + .section-block {
@@ -2388,6 +2401,10 @@ body[data-theme="light"] .video-card {
 
   .club-page .page-copy {
     gap: 12px;
+  }
+
+  .club-page .summary-card {
+    padding: 14px 15px;
   }
 
   .logo-name {
