@@ -1582,20 +1582,29 @@ body:not([data-theme="light"]) .results-aside p {
   align-items: start;
 }
 
+.club-page .page-copy {
+  gap: 18px;
+}
+
 .club-page .page-copy h1 {
   max-width: none;
   font-size: clamp(2.35rem, 4.9vw, 4.1rem);
-  line-height: 1;
+  line-height: 1.08;
   letter-spacing: 0.01em;
   text-wrap: balance;
 }
 
 .club-page .page-copy p {
   max-width: none;
+  line-height: 1.82;
 }
 
 .club-page .page-summary {
   grid-template-columns: 1fr;
+}
+
+.club-page .page-copy {
+  align-content: start;
 }
 
 .gallery-page .results-grid {
@@ -2115,14 +2124,32 @@ body[data-theme="light"] .video-card {
 
   .club-page .page-copy h1 {
     font-size: 1.84rem;
-    line-height: 1.08;
+    line-height: 1.14;
     letter-spacing: 0;
-    text-wrap: pretty;
+    text-wrap: unset;
+    margin-bottom: 0;
   }
 
   .club-page .page-copy p {
     font-size: 0.96rem;
     line-height: 1.7;
+  }
+
+  .club-page .page-copy {
+    gap: 14px;
+  }
+
+  .club-page .page-hero-grid {
+    gap: 22px;
+  }
+
+  .club-page .page-summary {
+    margin-top: 10px;
+    gap: 14px;
+  }
+
+  .club-page .page-hero + .section-block {
+    margin-top: 20px;
   }
 
   .club-page .section-head h2 {
@@ -2347,7 +2374,20 @@ body[data-theme="light"] .video-card {
 
   .club-page .page-copy h1 {
     font-size: 1.56rem;
-    line-height: 1.1;
+    line-height: 1.16;
+    margin-bottom: 0;
+  }
+
+  .club-page .page-hero-grid {
+    gap: 18px;
+  }
+
+  .club-page .page-summary {
+    margin-top: 12px;
+  }
+
+  .club-page .page-copy {
+    gap: 12px;
   }
 
   .logo-name {
