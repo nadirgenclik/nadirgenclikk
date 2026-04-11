@@ -1590,6 +1590,10 @@ body:not([data-theme="light"]) .results-aside p {
   text-wrap: balance;
 }
 
+.club-page .page-copy p {
+  max-width: none;
+}
+
 .club-page .page-summary {
   grid-template-columns: 1fr;
 }
@@ -2109,6 +2113,23 @@ body[data-theme="light"] .video-card {
     grid-template-columns: 1fr;
   }
 
+  .club-page .page-copy h1 {
+    font-size: 1.84rem;
+    line-height: 1.08;
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  .club-page .page-copy p {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .club-page .section-head h2 {
+    font-size: 1.45rem;
+    line-height: 1.14;
+  }
+
   .crest-card {
     grid-template-columns: 1fr;
     text-align: center;
@@ -2322,6 +2343,11 @@ body[data-theme="light"] .video-card {
   .hero-copy h1,
   .page-copy h1 {
     font-size: 1.72rem;
+  }
+
+  .club-page .page-copy h1 {
+    font-size: 1.56rem;
+    line-height: 1.1;
   }
 
   .logo-name {
